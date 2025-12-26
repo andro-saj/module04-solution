@@ -8,17 +8,30 @@
 // var helloSpeaker =
 
 // DO NOT attach the speakWord variable to the 'helloSpeaker' object.
-var speakWord = "Hello";
 
 // STEP 4: Rewrite the 'speak' function such that it is attached to the
 // helloSpeaker object instead of being a standalone function.
 // See Lecture 52, part 2
-function speak(name) {
-  console.log(speakWord + " " + name);
-}
+(function(window){
+  // STEP 3: Create an object, called 'helloSpeaker'
+  var helloSpeaker = {};
+
+  // DO NOT attach the speakWord variable to the 'helloSpeaker' object.
+  var speakWord = "Hello";
+
+  // STEP 4: Attach the 'speak' function to the helloSpeaker object
+  helloSpeaker.speak = function(name) {
+    console.log(speakWord + " " + name);
+  };
+
+  // STEP 5: Expose the 'helloSpeaker' object to the global scope.
+  window.helloSpeaker = helloSpeaker;
+})(window);
+
 
 // STEP 5: Expose the 'helloSpeaker' object to the global scope. Name it
 // 'helloSpeaker' on the global scope as well.
 // See Lecture 52, part 2
 // (Note, Step 6 will be done in the SpeakGoodBye.js file.)
 // xxxx.xxxx = helloSpeaker;
+
